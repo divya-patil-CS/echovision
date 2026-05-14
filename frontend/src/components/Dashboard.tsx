@@ -1,42 +1,19 @@
-import { useState } from "react";
 import HoverImage from "./HoverImage";
 
 export default function Dashboard() {
-  const [image, setImage] = useState<string | null>(null);
-
-  const handleUpload = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const file = e.target.files?.[0];
-
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setImage(imageUrl);
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-black text-white p-10">
-      <h1 className="text-4xl font-bold mb-10">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
+      
+      <h1 className="text-5xl font-bold mb-10">
         EchoVision AI Dashboard
       </h1>
 
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleUpload}
-        className="mb-10"
-      />
+      <p className="text-lg mb-8 text-gray-300">
+        Upload charts, graphs, or images for AI-powered voice explanation
+      </p>
 
-      {image && (
-        <HoverImage
-          image={image}
-          description="
-          This uploaded chart shows important visual data.
-          AI explanation will be generated here.
-          "
-        />
-      )}
+      <HoverImage />
+
     </div>
   );
 }
